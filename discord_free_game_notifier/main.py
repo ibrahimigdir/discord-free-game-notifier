@@ -1,17 +1,20 @@
 from __future__ import annotations
 
-# app.py
-from flask import Flask, jsonify
+from flask import Flask
+from threading import Thread
 
-app = Flask(__name__)
+app = Flask('')
 
-@app.route('/api', methods=['GET'])
-def api():
-    # İşlemlerinizi burada yapın
-    return jsonify({'mesaj': 'Merhaba, Dünya!'})
+@app.route('/')
+def main():
+  return "Your Bot Is Ready"
 
-if __name__ == '__main__':
-    app.run(debug=True)
+def run():
+  app.run(host="0.0.0.0", port=8000)
+
+def keep_alive():
+  server = Thread(target=run)
+  server.start()
 
 import datetime
 from typing import TYPE_CHECKING
