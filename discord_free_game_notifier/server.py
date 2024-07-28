@@ -1,18 +1,19 @@
-// server.js
-const express = require('express');
-const app = express();
-const axios = require('axios');
+# server.py
+import os
+from flask import Flask
+from threading import Thread
 
-app.get('/', (req, res) => {
-  axios.get('http://localhost:5000/api')
-    .then((response) => {
-      res.send(response.data);
-    })
-    .catch((hata) => {
-      console.error(hata);
-    });
-});
+app = Flask('')
 
-app.listen(3000, () => {
-  console.log('Sunucu 3000 portunda çalışıyor');
-});
+@app.route('/')
+def home():
+    return "Bot çalışıyor!"
+
+def run():
+    app.run(host='0.0.0.0', port=8080)
+
+def keep_alive():
+    t = Thread(target=run)
+    t.start()
+
+keep_alive()
