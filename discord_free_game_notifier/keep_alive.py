@@ -3,7 +3,7 @@ from threading import Thread
 app = Flask(__name__)
 @app.route('/')
 def index():
-    return render_template('../pages/index.html')
+    return "Alive"
 def run():
   app.run(host='0.0.0.0',port=3000)
 def keep_alive():  
