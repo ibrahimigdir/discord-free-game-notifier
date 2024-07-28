@@ -1,20 +1,7 @@
 from __future__ import annotations
 
-from flask import Flask
-from threading import Thread
-
-app = Flask('')
-
-@app.route('/')
-def main():
-  return "Your Bot Is Ready"
-
-def run():
-  app.run(host="0.0.0.0", port=8000)
-
-def keep_alive():
-  server = Thread(target=run)
-  server.start()
+from keep_alive import keep_alive
+keep_alive()
 
 import datetime
 from typing import TYPE_CHECKING
